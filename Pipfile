@@ -12,6 +12,7 @@ django-phone-field = "*"
 django-address = "*"
 django-extensions = "*"
 ipython = "*"
+djangorestframework = "*"
 
 [requires]
 python_version = "3.8"
