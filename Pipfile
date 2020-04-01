@@ -13,6 +13,7 @@ django-address = "*"
 django-extensions = "*"
 ipython = "*"
 djangorestframework = "*"
+django-heroku = "*"
 
 [requires]
 python_version = "3.8"
