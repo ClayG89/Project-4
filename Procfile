@@ -1,1 +1,1 @@
-web: gunicorn providence_project.wsgi --log-file -
+web: gunicorn providence_django.wsgi --log-file -
