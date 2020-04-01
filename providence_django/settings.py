@@ -39,6 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'providence',
     'phone_field',
+    'django_extensions'
+
     
 ]
 

@@ -15,13 +15,15 @@ class Truck(models.Model):
     def __str__(self):
         return self.name
 
+
+
 class Load(models.Model):
     loadnum = models.IntegerField()
     pickupnum = models.IntegerField()
     deliverynum = models.IntegerField()
     pickuptime = models.DateTimeField()
     deliverytime = models.DateTimeField()
-    rate = models.DecimalField(max_digits=5, decimal_places=2)
+    rate = models.DecimalField(max_digits=7, decimal_places=2)
     miles = models.IntegerField()
     pickuploc = models.CharField(max_length=100)
     deliveryloc = models.CharField(max_length=100)
@@ -29,11 +31,23 @@ class Load(models.Model):
     dropdel= models.BooleanField(default=False)
 
     def __str__(self):
-        return self.loadnum
+        return str(self.loadnum)
+
+   
 
 class Dispatch(models.Model):
-    truckinfo = models.ForeignKey(Truck)
-    loadinfo = models.ForeignKey(Load)
+    truckinfo = models.ForeignKey(
+        Truck, on_delete=models.CASCADE, related_name='dispatch')
+    loadinfo = models.ForeignKey(
+        Load, on_delete=models.CASCADE, related_name='dispatch')
+
+
+    def __str__(self):
+        return str(self.truckinfo)
+        
+
+    
+
 
 
 
