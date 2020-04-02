@@ -43,11 +43,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'providence',  
     'rest_framework',
-    'providence',
     'phone_field',
-    'django_extensions',
-    'providence_app'    
+    'django_extensions'
+       
 ]
 
 MIDDLEWARE = [
@@ -78,7 +78,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'providence_django.wsgi.application'
+WSGI_APPLICATION = '_django.wsgi.application'
 
 
 # Database
