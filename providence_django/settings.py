@@ -46,7 +46,8 @@ INSTALLED_APPS = [
     'providence',  
     'rest_framework',
     'phone_field',
-    'django_extensions'
+    'django_extensions',
+    'providence_django'
        
 ]
 
@@ -78,7 +79,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = '_django.wsgi.application'
+WSGI_APPLICATION = 'providence_django.wsgi.application'
 
 
 # Database
