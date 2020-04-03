@@ -1,13 +1,17 @@
 import React, { Component } from 'react'
+import axios from 'axios'
+import { Link } from 'react-router-dom'
+import Truck from './Truck'
+import AdminForm from './AdminForm'
 
 export default class TruckList extends Component {
     state = {
         trucklist: [],
     }
     getTruckList = () => {
-        axios.get('/api/trucklists').then((response) => {
+        axios.get('/api/v1/trucks/').then((response) => {
             const foundTruckList = response.data;
-            this.state({
+            this.setState({
         trucklist: foundTruckList
             })
         })
@@ -25,7 +29,7 @@ export default class TruckList extends Component {
             newTruckList: updatedNewTruckList,
         });
     }
-    submitCreateTruckList = (event) => {
+    submitCreateTruck = (event) => {
         event.preventDefault();
         axios.post('/api/trucklist', this.state.newTruckList).then(() => {
             this.toggleCreateForm();
@@ -38,16 +42,46 @@ export default class TruckList extends Component {
     render() {
         return (
             <div>
-                <h1>Providence Transport</h1>
+                
                 <h2>Trucks</h2>
+
                 <div>
-                <Link to="/trucklist">Trucks</Link>
+                    <input type="text" name="name" onChange={ this.updateTruck }/>
+                </div>
+                <div>
+                    <input type="text" name="trailertype" onChange={ this.updateTruck }/>
+                </div>
+                <div>
+                    <input type="number" name="trailernum" onChange={ this.updateTruck }/>
+                </div>
+                <div>
+                    <input type="number" name="hours" onChange={ this.updateTruck }/>                    
+                </div>
+                <div>
+                    <input type="number" name="Phone" onChange={ this.updateTruck }/>                  
+                </div>
+                <div>
+                    <input type="number" name="trucknum" onChange={ this.updateTruck }/>                  
+                </div>
+                <div>
+                    <input type="text" name="email" onChange={ this.updateTruck }/>                    
+                </div>
+
+                <button onClick={ this.submitCreateTruck }>Submit</button>
+                       
+                
+                <div>
+                   
                 {
-                    this.state.trucklist.map((trucklist, i) => {
+                    this.state.trucklist.map((truck, i) => {
                         return (
-                        <TruckList trucklist={ trucklist } key={ i }
-                        submitCreateTruckList={this.submitCreateTruckList}
-                        changeInputTruckList={this.changeInputTruckList}/>
+
+                            <div>
+                                <Link to={`/truck/${truck.id}`}>{truck.name}</Link>
+                            </div>
+                        // <Truck truck={ truck } key={ i }
+                        // submitCreateTruckList={this.submitCreateTruckList}
+                        // changeInputTruckList={this.changeInputTruckList}/>
                         )
                     })
                 }

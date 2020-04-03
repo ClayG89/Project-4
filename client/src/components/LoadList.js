@@ -1,4 +1,6 @@
 import React, { Component } from 'react'
+import axios from 'axios'
+import { Link } from 'react-router-dom'
 
 export default class LoadList extends Component {
     state = {
@@ -45,7 +47,7 @@ export default class LoadList extends Component {
                 {
                     this.state.loadlist.map((loadlist, i) => {
                         return (
-                        <Loadlist loadlist={ loadlist } key={ i }
+                        <LoadList loadlist={ loadlist } key={ i }
                         submitCreateLoadList={this.submitCreateLoadList}
                         changeInputLoadList={this.changeInputLoadList}/>
                         )

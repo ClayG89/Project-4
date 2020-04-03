@@ -9,4 +9,5 @@ router.register('loads', views.LoadView)
 router.register('dispatchs', views.DispatchView)
 
 urlpatterns = [
+    path('', include(router.urls)),
 ]
