@@ -1,7 +1,7 @@
 import React, {Component} from "react";
 import {BrowserRouter as Router, Route, Switch, Link} from "react-router-dom";
 import TruckList from "./components/TruckList";
-import Truck from "./components/Truck";
+import Truck from "./components/TruckList";
 import LoadList from "./components/LoadList";
 import Load from "./components/Load";
 import DispatchList from "./components/DispatchList";
