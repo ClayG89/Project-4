@@ -17,7 +17,7 @@ fetchLoad = async (loadId) => {
         const loadResponse = await axios.get(`/api/v1/loads/${loadId}/`)
         this.setState({
             load: loadResponse.data,
-            truck: loadResponse.data.loads,
+            truck: loadResponse.data.trucks,
         })
     }
     catch (error) {

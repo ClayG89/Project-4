@@ -7,6 +7,7 @@ import AdminForm from './AdminForm'
 export default class TruckList extends Component {
     state = {
         trucklist: [],
+        newTruckList: {}
     }
     getTruckList = () => {
         axios.get('/api/v1/trucks/').then((response) => {
@@ -22,7 +23,7 @@ export default class TruckList extends Component {
             showCreateForm: newShowCreateForm,
         });
     }
-    changeInputTruckList = (event) => {
+    updateTruck = (event) => {
         const updatedNewTruckList = { ...this.state.newTruckList};
         updatedNewTruckList[event.target.name] = event.target.value;
         this.setState({
@@ -31,7 +32,7 @@ export default class TruckList extends Component {
     }
     submitCreateTruck = (event) => {
         event.preventDefault();
-        axios.post('/api/trucklist', this.state.newTruckList).then(() => {
+        axios.post('/api/v1/trucks/', this.state.newTruckList).then(() => {
             this.toggleCreateForm();
             this.getTruckList();
         });
@@ -68,6 +69,10 @@ export default class TruckList extends Component {
                 <div>
                     <h4>Truck Number</h4>
                     <input type="number" name="trucknum" onChange={ this.updateTruck }/>                  
+                </div>
+                <div>
+                    <h4>Driver Number</h4>
+                    <input type="number" name="drivernum" onChange={ this.updateTruck }/>                  
                 </div>
                 <div>
                     <h4>Email</h4>
