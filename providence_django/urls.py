@@ -22,4 +22,5 @@ urlpatterns = [
     path('', views.FrontendAppView.as_view()), #New URL for the index route
     path('api/v1/', include('providence.urls')),
     re_path(r'^.*$', views.FrontendAppView.as_view()), #Says search Frontend for all other routes, so refreshing doesn't make the deployed page error
+   
 ]

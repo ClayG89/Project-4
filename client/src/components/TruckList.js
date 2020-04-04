@@ -46,24 +46,31 @@ export default class TruckList extends Component {
                 <h2>Trucks</h2>
 
                 <div>
+                    <h4>Driver Name</h4>
                     <input type="text" name="name" onChange={ this.updateTruck }/>
                 </div>
                 <div>
+                <h4>Trailer Type</h4>
                     <input type="text" name="trailertype" onChange={ this.updateTruck }/>
                 </div>
                 <div>
+                    <h4>Trailer Number</h4>
                     <input type="number" name="trailernum" onChange={ this.updateTruck }/>
                 </div>
                 <div>
+                    <h4>Hours Available</h4>
                     <input type="number" name="hours" onChange={ this.updateTruck }/>                    
                 </div>
                 <div>
+                    <h4>Phone</h4>
                     <input type="number" name="Phone" onChange={ this.updateTruck }/>                  
                 </div>
                 <div>
+                    <h4>Truck Number</h4>
                     <input type="number" name="trucknum" onChange={ this.updateTruck }/>                  
                 </div>
                 <div>
+                    <h4>Email</h4>
                     <input type="text" name="email" onChange={ this.updateTruck }/>                    
                 </div>
 

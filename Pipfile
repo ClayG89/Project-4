@@ -15,6 +15,7 @@ ipython = "*"
 djangorestframework = "*"
 django-heroku = "*"
 gunicorn = "*"
+djangorestframework-simplejwt = "*"
 
 [requires]
 python_version = "3.8"

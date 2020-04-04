@@ -1,3 +1,4 @@
+from datetime import timedelta
 """
 Django settings for providence_django project.
 
@@ -47,7 +48,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'phone_field',
     'django_extensions',
-    'providence_django'
+    'providence_django',
        
 ]
 
@@ -136,3 +137,5 @@ STATIC_URL = '/static/'
 
 import django_heroku
 django_heroku.settings(locals())
+
+
