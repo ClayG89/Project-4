@@ -6,12 +6,13 @@ import Load from './Load'
 export default class LoadList extends Component {
     state = {
         loadlist: [],
+        newLoadList: {}
     }
     getLoadList= () => {
-        axios.get('/api/v1/loads').then((response) => {
+        axios.get('/api/v1/loads/').then((response) => {
             const foundLoadList = response.data;
-            this.state({
-        load: foundLoadList
+            this.setState({
+        loadlist: foundLoadList
             })
         })
     }
@@ -21,16 +22,16 @@ export default class LoadList extends Component {
             showCreateForm: newShowCreateForm,
         });
     }
-    changeInputLoadList = (event) => {
+    updateLoad = (event) => {
         const updatedNewLoadList = { ...this.state.newLoadList};
         updatedNewLoadList[event.target.name] = event.target.value;
         this.setState({
             newLoadList: updatedNewLoadList,
         });
     }
-    submitCreateLoadList = (event) => {
+    submitCreateLoad= (event) => {
         event.preventDefault();
-        axios.post('/api/loadlist', this.state.newLoadList).then(() => {
+        axios.post('/api/v1/loads/', this.state.newLoadList).then(() => {
             this.toggleCreateForm();
             this.getLoadList();
         });
@@ -79,6 +80,12 @@ export default class LoadList extends Component {
                 <div>
                 <h4>Delivery Location</h4>
                     <input type="text" name="deliveryloc" onChange={ this.updateLoad }/>
+                </div>
+                <div>
+                    <input type="checkbox" name="droppick" onChange={ this.updateLoad}/>
+                </div>
+                <div>
+                    <input type="checkbox" name="dropdel" onChange={ this.updateLoad}/>
                 </div>
 
                 <button onClick={ this.submitCreateTruck }>Submit</button>

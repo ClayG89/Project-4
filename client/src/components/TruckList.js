@@ -64,7 +64,7 @@ export default class TruckList extends Component {
                 </div>
                 <div>
                     <h4>Phone</h4>
-                    <input type="number" name="Phone" onChange={ this.updateTruck }/>                  
+                    <input type="tel" name="Phone" onChange={ this.updateTruck }/>                  
                 </div>
                 <div>
                     <h4>Truck Number</h4>
@@ -76,7 +76,7 @@ export default class TruckList extends Component {
                 </div>
                 <div>
                     <h4>Email</h4>
-                    <input type="text" name="email" onChange={ this.updateTruck }/>                    
+                    <input type="email" name="email" onChange={ this.updateTruck }/>                    
                 </div>
 
                 <button onClick={ this.submitCreateTruck }>Submit</button>
