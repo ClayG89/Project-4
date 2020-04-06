@@ -6,28 +6,52 @@ import Load from './Load'
 
 export default class DispatchList extends Component {
     state = {
-        trucklist: [],
-        loadlist: [],
+        dispatchlist: [],
+        newDispatchList: {}
+        
     }
-    getLoadList = () => {
-        axios.get('/api/v1/loads/').then((response) => {
-            const foundLoadList = response.data;
+        // dispatchlist: [],
+        // loadlist: [],
+   
+    getDispatchList = () => {
+        axios.get('/api/v1/dispatchs/').then((response) => {
+            const foundDispatchList = response.data;
             this.setState({
-                loadlist: foundLoadList
+                dispatchlist: foundDispatchList
             })
         })
     }
-    getTruckList = () => {
-        axios.get('/api/v1/trucks/').then((response) => {
-            const foundTruckList = response.data;
-            this.setState({
-                trucklist: foundTruckList
-            })
-        })
+    toggleCreateForm = () => {
+        const newShowCreateForm = !this.state.showCreateForm;
+        this.setState({
+            showCreateForm: newShowCreateForm,
+        });
     }
+    updateDispatch = (event) => {
+        const updatedNewDispatchList = { ...this.state.newDispatchList};
+        updatedNewDispatchList[event.target.name] = event.target.value;
+        this.setState({
+            newDispatchList: updatedNewDispatchList,
+        });
+    }
+    submitCreateDispatch = (event) => {
+        event.preventDefault();
+        axios.post('/api/v1/dispatchs/', this.state.newDispatchList).then(() => {
+            this.toggleCreateForm();
+            this.getDispatchList();
+        });
+    }
+    // getTruckList = () => {
+    //     axios.get('/api/v1/trucks/').then((response) => {
+    //         const foundTruckList = response.data;
+    //         this.setState({
+    //             trucklist: foundTruckList
+    //         })
+    //     })
+    // }
     componentDidMount() {
-        this.getTruckList()
-        this.getLoadList()
+        this.getDispatchList()
+        // this.getLoadList()
     }
 
     render() {
@@ -35,8 +59,34 @@ export default class DispatchList extends Component {
         return (
             <div>
                 <div>
-                    <h2>Dispatch Detail</h2>
-                    <h3>Driver Name: {this.state.trucklist.name}</h3>
+                    <h2>Dispatch </h2>
+
+                    <div>
+                        {
+                            this.state.dispatchlist.map((dispatch, i) => {
+                                return (
+
+                                    <div>
+                                        <Link to={`/dispatch/${dispatch.id}`}>{dispatch.id}</Link>
+                                    </div>
+
+                                )
+                            })
+                        }
+                        {/* <div>
+                            {
+                                this.state.loadlist.map((load, i) => {
+                                    return (
+                                        <div>
+                                            <Link to={`/load/${load.id}`}>{load.loadnum}</Link>
+                                        </div>
+                                    )
+                                })
+                            }
+                        </div> */}
+                    </div>
+                  
+                    {/* <h3>Driver Name: {this.state.trucklist.name}</h3>
                     <h3>Trailer Type: {this.state.trucklist.trailertype}</h3>
                     <h3>Trailer Number: {this.state.trucklist.trailernum}</h3>
                     <h3>Hours: {this.state.trucklist.hours}</h3>
@@ -54,26 +104,10 @@ export default class DispatchList extends Component {
                     <h3>Pick up Location: {this.state.loadlist.pickuploc}</h3>
                     <h3>Delivery Location: {this.state.loadlist.deliveryloc}</h3>
                     <h3>DH/pick:  {this.state.loadlist.droppick}</h3>
-                    <h3>DH/delivery:  {this.state.loadlist.dropdel}</h3>
+                    <h3>DH/delivery:  {this.state.loadlist.dropdel}</h3> */}
                 </div>
-                <div>
-                    {
-                        this.state.trucklist.map((truck, i) => {
-                            return (
-                                <Link to={`/truck/${truck.id}`}>{truck.name}</Link>
-                            )
-                        })
-                    }
-                </div>
-                <div>
-                    {
-                        this.state.loadlist.map((load, i) => {
-                            return (
-                                <Link to={`/load/${load.id}`}>{load.loadnum}</Link>
-                            )
-                        })
-                    }
-                </div>
+
+
             </div>
         )
     }

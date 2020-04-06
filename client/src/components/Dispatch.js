@@ -5,22 +5,48 @@ import Home from './Home'
 import Truck from './Truck'
 import Load from './Load'
 
-export default class DispatchList extends Component {
+export default class Dispatch extends Component {
     state = {
-        trucklist: [],
-        loadlist: [],
+        dispatch: {
+            truckinfo: {
+                name: '',
+                trailertype: '',
+                trailernum: 0,
+                hours: 0,
+                Phone: 0,
+                trucknum: 0,
+                drivernum: 0,
+                email: '',
+            },
+            loadinfo: {
+                loadnum: 0,
+                pickupnum: 0,
+                deliverynum: 0,
+                pickuptime: 0,
+                deliverytime: 0,
+                rate: 0,
+                miles: 0,
+                pickuploc: '',
+                deliveryloc: '',
+                droppick: false,
+                dropdel: false,
+            },
+            id: 0,
+        },
+        
     }
     componentDidMount() {
-        const truckId = this.props.match.params.id;
-        this.fetchTruck(truckId)
+        const dispatchId = this.props.match.params.id;
+        this.fetchDispatch(dispatchId)
     }
 
-    fetchTruck = async (truckId) => {
+    fetchDispatch = async (dispatchId) => {
         try {
-            const truckResponse = await axios.get(`/api/v1/trucks/${truckId}/`)
+            const dispatchResponse = await axios.get(`/api/v1/dispatchs/${dispatchId}/`)
             this.setState({
-                truck: truckResponse.data,
-                load: truckResponse.data.loads,
+                dispatch: dispatchResponse.data,
+                truck: dispatchResponse.data.trucks,
+                load: dispatchResponse.data.loads,
             })
         }
         catch (error) {
@@ -28,53 +54,73 @@ export default class DispatchList extends Component {
             this.setState({ error: error.message })
         }
     }
-    componentDidMount() {
-        const loadId = this.props.match.params.id;
-        this.fetchLoad(loadId)
-    }
+    // componentDidMount() {
+    //     const truckId = this.props.match.params.id;
+    //     this.fetchTruck(truckId)
+    // }
 
-    fetchLoad = async (loadId) => {
-        try {
-            const loadResponse = await axios.get(`/api/v1/loads/${loadId}/`)
-            this.setState({
-                load: loadResponse.data,
-                truck: loadResponse.data.trucks,
-            })
-        }
-        catch (error) {
-            console.log(error)
-            this.setState({ error: error.message })
-        }
-    }
+    // fetchTruck = async (truckId) => {
+    //     try {
+    //         const truckResponse = await axios.get(`/api/v1/trucks/${truckId}/`)
+    //         this.setState({
+    //             truck: truckResponse.data,
+    //             load: truckResponse.data.loads,
+    //         })
+    //     }
+    //     catch (error) {
+    //         console.log(error)
+    //         this.setState({ error: error.message })
+    //     }
+    // }
+    // componentDidMount() {
+    //     const loadId = this.props.match.params.id;
+    //     this.fetchLoad(loadId)
+    // }
+
+    // fetchLoad = async (loadId) => {
+    //     try {
+    //         const loadResponse = await axios.get(`/api/v1/loads/${loadId}/`)
+    //         this.setState({
+    //             load: loadResponse.data,
+    //             truck: loadResponse.data.trucks,
+    //         })
+    //     }
+    //     catch (error) {
+    //         console.log(error)
+    //         this.setState({ error: error.message })
+    //     }
+    // }
     render() {
         return (
+            
             <div>
                 <h2>Dispatch Detail</h2>
+             
 
                 <h3>Truck Info</h3>
                 <div>
-                    <h3>Driver Name:  {this.state.truck.name}</h3>
-                    <h3>Trailer Type:  {this.state.truck.trailertype}</h3>
-                    <h3>Trailer Number:  {this.state.truck.trailernum}</h3>
-                    <h3>Available hours: {this.state.truck.hours}</h3>
-                    <h3>Phone:  {this.state.truck.Phone}</h3>
-                    <h3>Truck Number: {this.state.truck.trucknum}</h3>
-                    <h3>Driver Number:  {this.state.truck.drivernum}</h3>
-                    <h3>email: {this.state.truck.email}</h3>
+                    <h4>Driver Name:  {this.state.dispatch.truckinfo.name}</h4>
+                    <h4>Trailer Type:  {this.state.dispatch.truckinfo.trailertype}</h4>
+                    <h4>Trailer Number:  {this.state.dispatch.truckinfo.trailernum}</h4>
+                    <h4>Available hours: {this.state.dispatch.truckinfo.hours}</h4>
+                    <h4>Phone:  {this.state.dispatch.truckinfo.Phone}</h4>
+                    <h4>Truck Number: {this.state.dispatch.truckinfo.trucknum}</h4>
+                    <h4>Driver Number:  {this.state.dispatch.truckinfo.drivernum}</h4>
+                    <h4>email: {this.state.dispatch.truckinfo.email}</h4>
                 </div>
                 <h3>Load Info</h3>
                 <div>
-                    <h3>Load Number:  {this.state.load.loadnum}</h3>
-                    <h3>Pick up Number:  {this.state.load.pickupnum}</h3>
-                    <h3>Delivery Number:  {this.state.load.deliverynum}</h3>
-                    <h3>Pick up Time: {this.state.load.pickuptime}</h3>
-                    <h3>Delivery Time:  {this.state.load.deliverytime}</h3>
-                    <h3>Rate: {this.state.load.rate}</h3>
-                    <h3>Miles:  {this.state.load.miles}</h3>
-                    <h3>Pick up Location: {this.state.load.pickuploc}</h3>
-                    <h3>Delivery Location: {this.state.load.deliveryloc}</h3>
-                    <h3>DH/pick:  {this.state.load.droppick}</h3>
-                    <h3>DH/delivery:  {this.state.load.dropdel}</h3>
+                    <h4>Load Number:  {this.state.dispatch.loadinfo.loadnum}</h4>
+                    <h4>Pick up Number:  {this.state.dispatch.loadinfo.pickupnum}</h4>
+                    <h4>Delivery Number:  {this.state.dispatch.loadinfo.deliverynum}</h4>
+                    <h4>Pick up Time: {this.state.dispatch.loadinfo.pickuptime}</h4>
+                    <h4>Delivery Time:  {this.state.dispatch.loadinfo.deliverytime}</h4>
+                    <h4>Rate: {this.state.dispatch.loadinfo.rate}</h4>
+                    <h4>Miles:  {this.state.dispatch.loadinfo.miles}</h4>
+                    <h4>Pick up Location: {this.state.dispatch.loadinfo.pickuploc}</h4>
+                    <h4>Delivery Location: {this.state.dispatch.loadinfo.deliveryloc}</h4>
+                    <h4>DH/pick:  {this.state.dispatch.loadinfo.droppick}</h4>
+                    <h4>DH/delivery:  {this.state.dispatch.loadinfo.dropdel}</h4>
                 </div>
             </div>
         )

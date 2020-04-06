@@ -30,11 +30,7 @@ export default class Home extends Component {
                 <h1>Providence Transport</h1>
                 
                 <div>                  
-                    <div>                     
-                        <div><Link to="/truck">All Trucks</Link></div>
-                        <div><Link to="/load">All Loads</Link></div>
-                        <div><Link to="/dispatch">Dispatch</Link></div>                       
-                    </div>
+                    
                 </div>                   
             </div>
                 

@@ -44,6 +44,22 @@ export default class LoadList extends Component {
             <div>
                 
                 <h2>Loads</h2>
+                <div>
+                
+                {
+                    this.state.loadlist.map((load, i) => {
+                        return (
+
+                            <div>
+                                <Link to={`/load/${load.id}`}>{load.loadnum}</Link>
+                            </div>
+                        // <LoadList loadlist={ loadlist } key={ i }
+                        // submitCreateLoadList={this.submitCreateLoadList}
+                        // changeInputLoadList={this.changeInputLoadList}/>
+                        )
+                    })
+                }
+                </div>
 
                 <div>
                     <h4>Load Number</h4>
@@ -93,22 +109,7 @@ export default class LoadList extends Component {
                 <button onClick={ this.submitCreateLoad }>Submit</button>
                        
                 
-                <div>
-                
-                {
-                    this.state.loadlist.map((load, i) => {
-                        return (
 
-                            <div>
-                                <Link to={`/load/${load.id}`}>{load.loadnum}</Link>
-                            </div>
-                        // <LoadList loadlist={ loadlist } key={ i }
-                        // submitCreateLoadList={this.submitCreateLoadList}
-                        // changeInputLoadList={this.changeInputLoadList}/>
-                        )
-                    })
-                }
-                </div>
             </div>
         )
     }
