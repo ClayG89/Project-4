@@ -6,7 +6,7 @@ import LoadList from "./components/LoadList";
 import Load from "./components/Load";
 import DispatchList from "./components/DispatchList";
 import Dispatch from "./components/Dispatch";
-import Homepage from "./components/Homepage";
+import Home from "./components/Home";
 import AdminForm from "./components/AdminForm"
 import "./App.css";
 
@@ -17,16 +17,20 @@ class App extends Component {
                 <div className="App">
 
                     <div>
+                        <header>
                         <h1>Providence Transport</h1>
+                        </header>
+                      
+
                         <div>
                             <div><Link to="/truck">All Trucks</Link></div>
                             <div><Link to="/load">All Loads</Link></div>
-                            <div><Link to="/dispatch">All Dispatch</Link></div>
+                            <div><Link to="/dispatch">Dispatch</Link></div>
                         </div>
                     </div>
 
                     <Switch>
-                      <Route exact path="/" component={Homepage}/>
+                      <Route exact path="/" component={Home}/>
 
                       <Route exact path="/truck" component={TruckList}/>
 

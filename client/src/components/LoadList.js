@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
-import Load from './Load'
+
 
 export default class LoadList extends Component {
     state = {
@@ -59,11 +59,11 @@ export default class LoadList extends Component {
                 </div>
                 <div>
                 <h4>Pick up Time</h4>
-                    <input type="number" name="pickuptime" onChange={ this.updateLoad }/>
+                    <input type="datetime-local" name="pickuptime" onChange={ this.updateLoad }/>
                 </div>
                 <div>
                 <h4>Delivery Time</h4>
-                    <input type="number" name="deliverytime" onChange={ this.updateLoad }/>
+                    <input type="datetime-local" name="deliverytime" onChange={ this.updateLoad }/>
                 </div>
                 <div>
                 <h4>Rate</h4>
@@ -82,13 +82,15 @@ export default class LoadList extends Component {
                     <input type="text" name="deliveryloc" onChange={ this.updateLoad }/>
                 </div>
                 <div>
+                    <h4>DH / Pick Up</h4>
                     <input type="checkbox" name="droppick" onChange={ this.updateLoad}/>
                 </div>
                 <div>
+                    <h4>DH / Delivery</h4>
                     <input type="checkbox" name="dropdel" onChange={ this.updateLoad}/>
                 </div>
 
-                <button onClick={ this.submitCreateTruck }>Submit</button>
+                <button onClick={ this.submitCreateLoad }>Submit</button>
                        
                 
                 <div>

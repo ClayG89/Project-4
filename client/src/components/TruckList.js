@@ -46,6 +46,23 @@ export default class TruckList extends Component {
                 
                 <h2>Trucks</h2>
 
+                <div className="availableTrucks">
+                   
+                   {
+                       this.state.trucklist.map((truck, i) => {
+                           return (
+   
+                               <div>
+                                   <Link to={`/truck/${truck.id}`}>{truck.name}</Link>
+                               </div>
+                           // <Truck truck={ truck } key={ i }
+                           // submitCreateTruckList={this.submitCreateTruckList}
+                           // changeInputTruckList={this.changeInputTruckList}/>
+                           )
+                       })
+                   }
+                   </div>
+
                 <div>
                     <h4>Driver Name</h4>
                     <input type="text" name="name" onChange={ this.updateTruck }/>
@@ -80,24 +97,7 @@ export default class TruckList extends Component {
                 </div>
 
                 <button onClick={ this.submitCreateTruck }>Submit</button>
-                       
-                
-                <div>
-                   
-                {
-                    this.state.trucklist.map((truck, i) => {
-                        return (
 
-                            <div>
-                                <Link to={`/truck/${truck.id}`}>{truck.name}</Link>
-                            </div>
-                        // <Truck truck={ truck } key={ i }
-                        // submitCreateTruckList={this.submitCreateTruckList}
-                        // changeInputTruckList={this.changeInputTruckList}/>
-                        )
-                    })
-                }
-                </div>
             </div>
         )
     }

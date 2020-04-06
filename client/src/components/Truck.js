@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import axios from 'axios'
 
 
+
 export default class Truck extends Component {
     state = {
         truck: [],       

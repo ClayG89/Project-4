@@ -1,10 +1,32 @@
 .App {
   text-align: center;
 }
+.availableTrucks {
+  border-style: solid;
+  background-color: blue;
+  border-width: 7px;
+  border-color: blue;
+  background-color: yellow;
+}
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.App h1{
+  font-size: 50px;
+  color: yellow ;
+}
+h2 {
+  font-size: 35px;
+}
+h3 {
+  font-size: 25px;
+}
+h4 {
+  font-size: 20px;
+}
+header {
+  background-color: blue;
+}
+.Trucklist {
+  background-color: blue;
 }
 
 @media (prefers-reduced-motion: no-preference) {
