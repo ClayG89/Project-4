@@ -9,6 +9,7 @@ import Dispatch from "./components/Dispatch";
 import Home from "./components/Home";
 import AdminForm from "./components/AdminForm"
 import "./App.css";
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 class App extends Component {
     render() {
@@ -20,8 +21,7 @@ class App extends Component {
                         <header>
                         <h1>Providence Transport</h1>
                         </header>
-                      
-
+    
                         <div>
                             <div><Link to="/truck">All Trucks</Link></div>
                             <div><Link to="/load">All Loads</Link></div>
