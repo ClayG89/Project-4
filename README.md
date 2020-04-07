@@ -16,10 +16,8 @@ https://providencetransport.herokuapp.com/
 
 Project 4 Wireframe
 
-Project-4 wireframes.png
-
-Project 4 ERD
+https://git.generalassemb.ly/clayGue69/Project-4/blob/master/Project-4%20wireframes.png?raw=true
 
 Project-4 ERD.png
 
-
+https://git.generalassemb.ly/clayGue69/Project-4/blob/master/Project-4%20ERD.png?raw=true
