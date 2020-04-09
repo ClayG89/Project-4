@@ -5,6 +5,9 @@ import Home from './Home'
 import Truck from './Truck'
 import Load from './Load'
 
+axios.defaults.xsrfCookieName = 'csrftoken'
+axios.defaults.xsrfHeaderName = 'X-CSRFToken'
+
 export default class Dispatch extends Component {
     state = {
         dispatch: {

@@ -4,6 +4,9 @@ import { Link } from 'react-router-dom'
 import Truck from './Truck'
 import AdminForm from './AdminForm'
 
+axios.defaults.xsrfCookieName = 'csrftoken'
+axios.defaults.xsrfHeaderName = 'X-CSRFToken'
+
 export default class TruckList extends Component {
     state = {
         trucklist: [],

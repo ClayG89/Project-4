@@ -4,6 +4,9 @@ import { Link } from 'react-router-dom'
 import Truck from './Truck'
 import Load from './Load'
 
+axios.defaults.xsrfCookieName = 'csrftoken'
+axios.defaults.xsrfHeaderName = 'X-CSRFToken'
+
 export default class DispatchList extends Component {
     state = {
         dispatchlist: [],
